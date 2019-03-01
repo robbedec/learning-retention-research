@@ -7,7 +7,19 @@
   url      = {https://n.neurology.org/content/neurology/24/11/1019.full.pdf},
   language = {English},
   doi      = {10.1212/01.wnl.0000398283.10171.75},
-  file     = {:Buschke1974.pdf:PDF},
+  file     = {:BuschkeFuld1974.pdf:PDF},
+}
+
+@Article{RoedigerKarpicke2006,
+  author   = {Roediger, Henry L. and Karpicke, Jeffrey D.},
+  title    = {Test-Enhanced Learning},
+  journal  = {Psychological science},
+  year     = {2006},
+  subtitle = {Taking memory tests improves long-term retention},
+  volume   = {17},
+  number   = {3},
+  doi      = {10.1111/j.1467-9280.2006.01693.x},
+  file     = {:RoedigerKarpicke2006.pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

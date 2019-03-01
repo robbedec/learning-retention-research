@@ -1,6 +1,6 @@
 % Encoding: UTF-8
 
-@Electronic{Buschke1974,
+@Electronic{BuschkeF1974,
   author   = {Buschke, Herman and Altman, Fuld, Paula},
   title    = {Evaluating storage, retention, and retrieval in disordered memory and learning},
   year     = {1974},
@@ -13,6 +13,8 @@
 @Article{RoedigerKarpicke2006,
   author   = {Roediger, Henry L. and Karpicke, Jeffrey D.},
   title    = {Test-Enhanced Learning},
+  journal  = {Psychological science},
+  year     = {2006},
   subtitle = {Taking memory tests improves long-term retention},
   volume   = {17},
   number   = {3},
