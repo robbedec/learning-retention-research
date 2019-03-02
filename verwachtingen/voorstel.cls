@@ -1,86 +1,72 @@
-%===============================================================================
-% LaTeX-sjabloon voor een artikel voor gebruik in de opleiding toegepaste
-% informatica aan HOGENT.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX-sjabloon voorstel onderwerp Bachelorproef
+% HoGent Bedrijf en Organisatie, opleiding toegepaste informatica
+% 
+% Gebaseerd op ``Stylish Article'' class
+% Version 2.1 (1/10/15)
 %
-% Gebaseerd op ``Stylish Article'' class Version 2.1 (1/10/15)
-% Originele stijl beschikbaar op: http://www.LaTeXTemplates.com
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
 %
-% Originele auteur:
-% Mathias Legrand (legrand.mathias@gmail.com), met uitgebreide aanpassingen door
-% Vel (vel@latextemplates.com).
-%
-% Aanpassingen voor HOGENT:
-% Jens Buysse (jens.buysse@hogent.be) en Bert Van Vreckem
-% (bert.vanvreckem@hogent.be)
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+% With extensive modifications by:
+% Vel (vel@latextemplates.com)
 %
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
-%===============================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hogent-article}[2019/01/10 Artikel voor gebruik in de opleiding toegepaste informatica aan HOGENT]
+\ProvidesClass{voorstel}
 
 \RequirePackage{ifthen}
 \RequirePackage{calc}
-\RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
-
 \AtEndOfClass{\RequirePackage{microtype}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions*
 \LoadClass{article}
-
-%-------------------------------------------------------------------------------
-% Algemene vormgeving, pagina-indeling
-%-------------------------------------------------------------------------------
-
-\RequirePackage[%
-a4paper,
-bottom=2.1cm,
-left=1.7cm,
-right=1.7cm,
-top=2.1cm,
-footskip=37pt,
-headheight=12pt
-]{geometry}
-
-\RequirePackage{booktabs}
-\RequirePackage{graphicx}
-
-\RequirePackage{enumitem}
-\setlist{nolistsep} % Geen ruimte tussen items in een list
-
-\usepackage{hyperref}
-\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=black,citecolor=color2,linkcolor=color2,bookmarksopen=false}
+\RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
 
 %----------------------------------------------------------------------
-% Lettertypes en kleuren
+%  FONTS & COLORS
 %----------------------------------------------------------------------
-
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
 
 \RequirePackage{times}      % Loads the Times-Roman Fonts
 \RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
 
-\RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{csquotes}
-
 \RequirePackage{xcolor}
-
 \definecolor{color1}{RGB}{0,147,208} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20}   % Color of the boxes behind the abstract and headings
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
 
-%-------------------------------------------------------------------------------
-% Taal, lokalisatie
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  VARIOUS USEFUL PACKAGES
+%----------------------------------------------------------------------
 
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{csquotes}
 \RequirePackage[english,dutch]{babel}
-\RequirePackage{iflang}
+\usepackage{hyperref}                      % hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=black,citecolor=color2,linkcolor=color2,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
 
-%-------------------------------------------------------------------------------
-% Bijschrift bij afbeeldingen en tabellen
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  MARGINS
+%----------------------------------------------------------------------
+
+\RequirePackage[left=2cm,%
+right=2cm,%
+top=2.25cm,%
+bottom=2.25cm,%
+headheight=11pt,%
+a4paper]{geometry}%
+
+%----------------------------------------------------------------------
+%  FIGURES AND TABLES CAPTIONS
+%----------------------------------------------------------------------
 
 \RequirePackage[labelfont={bf,sf,small},%
 labelsep=period,%
@@ -88,9 +74,9 @@ justification=raggedright]{caption}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 
-%-------------------------------------------------------------------------------
-% Vormgeving sectiekoppen
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  SECTION/SUBSECTION/PARAGRAPH SET-UP
+%----------------------------------------------------------------------
 
 \RequirePackage[explicit]{titlesec}
 \titleformat{\section}
@@ -127,16 +113,14 @@ justification=raggedright]{caption}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{10pt}
 
-%-------------------------------------------------------------------------------
-% Inhoudstafel
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  TABLEOFCONTENTS SET-UP
+%----------------------------------------------------------------------
+\newlength{\tocsep}
+\setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
+\setcounter{tocdepth}{3} % Three levels in the table of contents section: sections, subsections and subsubsections
 
 \usepackage{titletoc}
-
-\newlength{\tocsep}
-\setlength\tocsep{1.5pc} % Inspringen
-\setcounter{tocdepth}{3} % neem 3 niveaus op in de inhoudstafel
-
 \contentsmargin{0cm}
 \titlecontents{section}[\tocsep]
   {\addvspace{4pt}\small\bfseries\sffamily}
@@ -157,9 +141,9 @@ justification=raggedright]{caption}
   {}
   [\ \textbullet\ ]
 
-%-------------------------------------------------------------------------------
-% Meerdere auteurs
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  MULTIPLE AUTHOR SET
+%----------------------------------------------------------------------
 
 \newcount\@authcnt
 \newcount\@tmpcnt\@tmpcnt\z@
@@ -179,9 +163,16 @@ justification=raggedright]{caption}
     \expandafter\gdef\csname @auth\romannumeral\the\@authcnt\endcsname
     {#1}}
 
-%-------------------------------------------------------------------------------
-% Titel, kader met samenvatting
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------
+%  LIST CONTROL
+%----------------------------------------------------------------------
+
+\RequirePackage{enumitem}
+\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
+
+%----------------------------------------------------------------------
+%  ABSTRACT+AUTHOR FRAME
+%----------------------------------------------------------------------
 
 \newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
 \newcommand{\PaperType}[1]{\def\@PaperType{#1}}
@@ -190,6 +181,7 @@ justification=raggedright]{caption}
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 \newcommand{\CoPromotor}[1]{\def\@CoPromotor{#1}}
 
+% ---------------------------------------------------------------------
 \setlength{\columnsep}{0.55cm} % Distance between the two columns of text
 \setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
 
@@ -229,25 +221,25 @@ justification=raggedright]{caption}
 }
 
 %----------------------------------------------------------------------
-% Paginahoofding en voettekst
+%  PAGE HEADER
 %----------------------------------------------------------------------
 
 \RequirePackage{fancyhdr}  % Needed to define custom headers/footers
 \RequirePackage{lastpage}  % Number of pages in the document
 \pagestyle{fancy}          % Enables the custom headers/footers
 % Headers
-\lhead{\small\sffamily\bfseries\@PaperTitle}%
+\lhead{}%
 \chead{}%
-\rhead{\thepage/\pageref{LastPage}}
+\rhead{\small\sffamily\bfseries\@PaperTitle}
 % Footers
 \lfoot{\sffamily\small\bfseries\@PaperType}%
-\cfoot{}%
+\cfoot{\thepage/\pageref{LastPage}}%
 \rfoot{\includegraphics[height=1.1cm]{img/HOGENT_Logo_Pos_rgb.png}}%
 \renewcommand{\headrulewidth}{0pt}% % No header rule
 \renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %----------------------------------------------------------------------
-% Bibliografie
+%  REFERENCES
 %----------------------------------------------------------------------
 
 \RequirePackage[backend=biber,style=apa]{biblatex}
