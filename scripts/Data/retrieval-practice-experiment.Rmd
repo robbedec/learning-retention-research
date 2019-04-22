@@ -1,0 +1,78 @@
+---
+title: "Resultaten experiment Retrieval Practice"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Variabelen
+
+- **rt**: Heb je Retrieval practice toegepast bij het studeren?
+    - Ja, Nee
+- **muziek**: Heb je tijdens het studeren geluisterd naar muziek, meer bepaald Sonata voor pianoduet in D groot, K448
+    - Ja, Nee
+- **gender**: Man, Vrouw, Anders
+- **geboortejaar**
+- **woonplaats**: Hoe zou je je woonplaats beschrijven?
+    - Platteland, Dorp, Stad, Anders
+- **diploma_vader**: Wat is het hoogst behaalde diploma van je vader?
+    - Geen, Lagere school, Lager secundair, Hoger secundair, Bachelor of equivalent, Master of equivalent buiten universiteit, Master of equivalent universiteit, Doctoraat, Weet niet
+- **diploma_moeder**: idem
+- **secundair**: Welk soort opleiding volgde je in het secundair?
+    - ASO, TSO, BSO
+- **uren_wiskunde**: Hoeveel uren Wiskunde had je in het laatste jaar van het secundair?
+- **uren_nederlands**: Hoeveel uren Nederlands had je in het laatste jaar van het secundair?
+- **vakken_hernemen**: Heb je in de loop van je opleiding toegepaste informatica ooit een vak of vakken moeten overdoen, d.w.z. ook na de tweede zittijd geen credit gehaald?
+    - "Ja", "Nee"
+- **studie_efficientie**: Wat was je studie-efficiëntie het afgelopen academiejaar (d.w.z. het percentage van behaalde credits t.o.v. opgenomen credits)?
+    - "0-24%", "25-49%", "50-74%", "75-100%"
+- **inschrijving_ozt**: De hoeveelste keer ben je ingeschreven voor het vak Onderzoekstechnieken?
+- **traject**: Volg je dit jaar een aangepast traject of modeltraject?
+    - aangepast, model
+- **keuze_2ti**: Welke keuzerichting volg je in 2TI?
+    - "Programmeren", "Systeembeheer"
+- **leerstoornis**: Heb je een leerstoornis of een andere medische conditie die impact heeft op je studies (meerdere antwoorden mogelijk)?
+- **beweging_ud**: Hoeveel uur per dag beweeg je gemiddeld? Bv. ook fietsen van/naar school, wandelen, enz.
+- **sport_uw**: Hoeveel uur per week beoefen je een sport? (bv. NIET wandelen, fietsen van/naar school. Wel bv. voetbal in clubverband, atletiek, zwemmen, enz.)
+- **boeken_m**: Hoeveel boeken lees je gemiddeld per maand?
+- **alcohol_w**: Hoeveel eenheden alcohol consumeer je gemiddeld per week? Een eenheid is een glas/portie van een alcoholhoudende drank
+- **frq_cannabis**: Hoe vaak gebruik je cannabis?
+    - "Nooit", "Zelden", "Maandelijks", "Enkele keren per maand", "Wekelijks", "Enkele keren per week", "Dagelijks"
+- **uur_slaap**: Hoe veel uur slaap je gemiddeld voor een schooldag?
+- **slaapkwaliteit**: Hoe beoordeel je je eigen slaapkwaliteit?
+    - "Zeer slecht", "Slecht", "Noch slecht, noch goed", "Goed", "Zeer goed"
+- **slaappatroon**: Hoe regelmatig is je slaappatroon, d.w.z. in hoeverre ga je telkens op hetzelfde uur slapen en sta je op hetzelfde uur op?
+    - "Zeer onregelmatig", "Onregelmatig", "Noch onregelmatig, noch regelmatig", "Regelmatig", "Zeer regelmatig"
+- **wakker_worden**: Hoe vaak word je wakker 's nachts?
+    - "Nooit", "Zelden", "Af en toe", "Meestal", "Elke nacht", "Meermaals per nacht"
+- **score_1**, **score_2**: Resultaat van de eerste, resp. tweede *Retention Test* (max. 30)
+- **uren_slaap_1**; **uren_slaap_2**: Hoeveel uur heb je vannacht geslapen (i.e. de nacht voor de eerste, resp. tweede retention test)
+- **interessant_1**, **interessant_2**: Vind je de tekst interessant?
+    - "Helemaal oneens", "Oneens", "Noch eens, noch oneens", "Eens", "Helemaal eens"
+- **uitgerust_1**, **uitgerust_2**: Voel je jezelf uitgerust? I.e. bij de eerste, resp. tweede retention test
+    - "Helemaal oneens", "Oneens", "Noch eens, noch oneens", "Eens", "Helemaal eens"
+- **gestresseerd_1**, **gestresseerd_2**: Voel je je gestresseerd?  I.e. bij de eerste, resp. tweede retention test
+    - "Helemaal oneens", "Oneens", "Noch eens, noch oneens", "Eens", "Helemaal eens"
+
+## Dataset importeren
+
+Je kan de dataset importeren uit het CSV-bestand zonder speciale parameters in te moeten stellen:
+
+```{r}
+rt <- read.csv(file = "retrieval-practice-experiment.csv")
+```
+
+Merk op dat bij kwalitatieve variabelen er nog geen volgorde is vastgelegd bij het importeren. Je kan voor ordinale variabelen zelf de ordening vastleggen. We geven hier één voorbeeld, voor de andere ordinale variabelen is de werkwijze equivalent:
+
+```{r}
+rt$diploma_vader <-
+  factor(rt$diploma_vader, levels = c(
+    "Weet niet", "Geen", "Lagere school", "Lager secundair",
+    "Hoger secundair", "Bachelor of equivalent",
+    "Master of equivalent buiten universiteit",
+    "Master of equivalent universiteit", "Doctoraat"))
+```
+
+Geef de mogelijke waarden dus op in de vorm van een lijst/array, gesorteerd van "laag" naar "hoog".
