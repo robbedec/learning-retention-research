@@ -11,31 +11,31 @@ experiment.variables <- experiment.data[variables]
 # Enkel de volledige rijen gebruiken
 experiment.variables <- subset(experiment.variables, score_1 != "" & score_2 != "" & uren_wiskunde != "" & secundair != "")
 
-## Vergelijking gemiddelden
-aggData <- aggregate(experiment.variables, by=list(experiment.variables$rt), FUN = mean, na.rm = TRUE)
-aggData <- data.frame(aggData$score_1, aggData$score_2)
-
-matrix <- as.matrix(sapply(aggData, as.numeric))
-colnames(matrix) <- c('Score 1', 'Score 2')
-rownames(matrix) <- c('RT', 'lezen')
-barplot(matrix, main ="Gemiddelde scores", ylab = "Herinnerde feiten", beside = TRUE, legend.text = TRUE, args.legend = list(x = "topright", bty = "n", inset = c(0,-0.1,0,0)))
-
-
 # Datasets voor elke categorie
 AsoRt <- subset(experiment.variables, secundair=="ASO" & rt=="Ja ", select = c(score_1,score_2))
 NAsoRt <- subset(experiment.variables, secundair!="ASO" & rt=="Ja ", select = c(score_1,score_2))
 
 # Test of het gemiddelde gelijk is (t = 2.8597 -> niet gelijk)
-t.test(AsoRt["score_1"], NAsoRt["score_1"], mu = 0)
+test <- t.test(AsoRt["score_1"], NAsoRt["score_1"], mu = 0)
+N=50
+samp=rnorm(N)
+tcrit=qt(0.025, df=(N-1))
+dum=seq(-3.5, 3.5, length=10^4)
 
-AsoRtMuziek <- experiment.variables[ which(secundair=="ASO" & muziek=="Ja", rt=="Ja"),]
+plot(dum, dt(dum, df=(N-1)), type = 'l', xlab = 't', ylab = 'f(t)')
+abline(v=1.6, lty=2)
+abline(v=tcrit, col='red', lty=2)
+abline(v=-tcrit, col='red', lty=2)
+
+
+AsoRtMuziek <- experiment.variables[ which(secundair=="ASO" & muziek=="Ja", rt=="Ja "),]
 Aso <- experiment.variables[ which(secundair=="ASO" & muziek=="Nee", rt=="Nee "),]
-AsoMuziek <- experiment.variables[ which(secundair=="ASO" & muziek=="Ja", rt=="Nee"),]
+AsoMuziek <- experiment.variables[ which(secundair=="ASO" & muziek=="Ja", rt=="Nee "),]
 
 
-NAsoRtMuziek <- experiment.variables[ which(secundair!="ASO" & muziek=="Ja", rt=="Ja"),]
+NAsoRtMuziek <- experiment.variables[ which(secundair!="ASO" & muziek=="Ja", rt=="Ja "),]
 NAso <- experiment.variables[ which(secundair!="ASO" & muziek=="Nee", rt=="Nee "),]
-NAsoMuziek <- experiment.variables[ which(secundair!="ASO" & muziek=="Ja", rt=="Nee"),]
+NAsoMuziek <- experiment.variables[ which(secundair!="ASO" & muziek=="Ja", rt=="Nee "),]
 
 # Gemiddelden per categorie
 GemiddeldesAsoScore1 <- c(mean(AsoRt$score_1), mean(AsoRtMuziek$score_1), mean(Aso$score_1), mean(AsoMuziek$score_1))
