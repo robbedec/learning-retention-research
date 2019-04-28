@@ -11,6 +11,16 @@ experiment.variables <- experiment.data[variables]
 # Enkel de volledige rijen gebruiken
 experiment.variables <- subset(experiment.variables, score_1 != "" & score_2 != "" & uren_wiskunde != "" & secundair != "")
 
+## Vergelijking gemiddelden
+aggData <- aggregate(experiment.variables, by=list(experiment.variables$rt), FUN = mean, na.rm = TRUE)
+aggData <- data.frame(aggData$score_1, aggData$score_2)
+
+matrix <- as.matrix(sapply(aggData, as.numeric))
+colnames(matrix) <- c('Score 1', 'Score 2')
+rownames(matrix) <- c('RT', 'lezen')
+barplot(matrix, main ="Gemiddelde scores", ylab = "Herinnerde feiten", beside = TRUE, legend.text = TRUE, args.legend = list(x = "topright", bty = "n", inset = c(0,-0.1,0,0)))
+
+
 # Datasets voor elke categorie
 AsoRt <- subset(experiment.variables, secundair=="ASO" & rt=="Ja ", select = c(score_1,score_2))
 NAsoRt <- subset(experiment.variables, secundair!="ASO" & rt=="Ja ", select = c(score_1,score_2))
