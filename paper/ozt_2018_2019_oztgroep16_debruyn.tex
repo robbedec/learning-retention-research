@@ -16,6 +16,8 @@
 \documentclass{hogent-article}
 
 \usepackage{lipsum} % Voor vultekst
+\usepackage{float}
+\usepackage[belowskip=-10pt,aboveskip=0pt]{caption}
 
 %------------------------------------------------------------------------------
 % Metadata over het artikel
@@ -181,38 +183,29 @@
 	\section{Verwachte resultaten}
 	\label{sec:verwachte_resultaten}
 	We verwachten dat de studenten die Retrieval Practice toepasten, beter zullen scoren op de test en duidelijker beter zullen scoren op de test de week nadien. De groepen die naar muziek luisterden, zullen iets minder scoren dan de groepen die dit niet deden.
-	
 	Als parameters van deze studie hebben we ons vooral gebaseerd op de achtergrond en ervaring van de student. We kijken naar de achtergrond van de ouders, die van de student, en zijn eerdere studierichtingen. Deze pijlers hangen goed samen omdat ze een beeld geven over de situatie van de student. We lichten de hypotheses nu verder toe.
-	
 	Onze eerste hypothese is dat studenten met een hoog aantal uren wiskunde beter zullen scoren dan die met een laag aantal uren wiskunde (minder dan 4 uur). Dit omdat wiskunde het logisch redeneren zou kunnen bevorderen.
 	We hebben hier ook een grafiek van:
 	
-	
-	\begin{minipage}[b]{2.8in}
-		\centering
+	\begin{figure}[H]
 		\includegraphics[width=\linewidth]{img/imgg1.jpg}
-	\end{minipage}
+		\caption{Mockgrafiek 1}
+	\end{figure}
 	
-	\begin{minipage}[b]{2.8in}
-		\centering
+	\begin{figure}[H]
 		\includegraphics[width=\linewidth]{img/mockboxplot.png}
-	\end{minipage}
-	
+		\caption{Mockgrafiek 2}
+	\end{figure}
 	
 	We denken ook dat studenten met minstens één ouder met universitair diploma, hoger zullen scoren dan studenten die ouders hebben zonder universitair diploma. 
 	Een student met ouders die een universitair diploma behaald hebben kan bijvoorbeeld meer gestimuleerd worden of meer motivatie hebben om dat ook te behalen. 
-	De grafiek:
-	
 	Een derde stelling is dat studententen met een algemenere secundaire achtergrond (ASO) beter scoren dan degene die iets anders deden. Dit denken we omdat zij vaker in contact kwamen met algemenere informatie in tekstvorm. We construeerder een mogelijke grafiek waarbij niet alleen de variabele bekeken wordt, maar ook wordt de opdeling van de groepen erin verwerkt:
-	
 	Als vierde en laatste hypothese stellen we dat mensen met weinig interesse in het experiment minder scoren, omdat zij minder snel hun best zullen doen en niet zo begaan zijn met het experiment.
 	
-	
-	
-	\begin{minipage}[b]{2.8in}
-		\centering
+	\begin{figure}[H]
 		\includegraphics[width=\linewidth]{img/imgg2.jpg}
-	\end{minipage}
+		\caption{Mockgrafiek 3}
+	\end{figure}
 	
 	%---------- experimenten ----------------------------------------------
 	\section{Experimenten}
@@ -248,33 +241,52 @@
 	
 	De 4e hypothese kijkt of de interesse van de studenten een rol speelt in hun scores.
 	We starten de analyse door een verband te zoeken tussen de scores. Bij het uitvoeren van een t-test tussen de studenten die uit een ASO richting komen en diegene uit een andere richting, bekomen we 1.6. Hiermee vinden we de kritieke grenswaarden en het betrouwbaarheidsinterval zonder de standaardafwijking van de steekproef te gebruiken.
-	
-	\begin{minipage}[b]{2.8in}
-		\centering
-		\includegraphics[width=\linewidth]{img/ttest.png}
-	\end{minipage}
-	
-	Vervolgens onderzoeken we de invloed van het aantal uur wiskunde in het middelbaar op het aantal herinnerde feiten. We zien een duidelijk stijgende trend voor een hoger aantal wiskunde waarbij de gemiddelden in de categorieën [3,4] en [5,8] op gelijkaardige hoogte liggen.
-	
-	\begin{minipage}[b]{2.8in}
-		\centering
-		\includegraphics[width=\linewidth]{img/boxplot1.png}
-	\end{minipage}
 
-	\begin{minipage}[b]{2.8in}
-		\centering
+	
+	
+	\subsection{Uren wiskunde}
+	Zoals eerder vermeld zoeken we naar een verband tussen het aantal uren wiskunde verkregen in het middelbaar en het aantal herinnerde feiten op beide retentietesten. Op onderstaande boxplots wordt de spreiding volgens het aantal uren wiskunde geïllustreerd. Er is een duidelijk stijgende trend zichtbaar voor een hoger aantal uren wiskunde waarbij de gemiddelden in de categorieën [3,4] en [5,8] op gelijkaardige hoogte liggen. De resultaten van de 2e testronde liggen lager. Dit komt deels omdat de testpersonen de tekst niet opnieuw mochten lezen maar enkel met zijn herinneringen het invulblad moest indienen. Er zijn opniew gelijkaardige gemiddelden maar in dit geval voor alle geteste categorieën. Merk op, het grootste deel van de groep behaalde een mindere score op de 2e test maar er zijn meer uitschieters.
+	
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{img/boxplot1.png}
+		\caption{Boxplot score 1}
+	\end{figure}
+
+	\begin{figure}[H]
 		\includegraphics[width=\linewidth]{img/boxplot2.png}
-	\end{minipage}
+		\caption{Boxplot score 2}
+	\end{figure}
+
+	Vervolgens worden de frequenties bekeken, de extreem lage scores vallen direct op en zijn een indicatie naar testpersonen die weinig interesse tonen in het onderzoek (zoals eerder vermeld) en daarom minder hun best hebben gedaan om feiten te herinneren of in de 1e plaats de tekst grondig te analyseren. Hieruit kunt u ook afleiden dat elke categorie genoeg representatief is in het onderzoek.
 	
-	Bij de 2e testronde zien we een duidelijke daling bij het aantal herinnerde feiten. Dit is te wijten aan dat niemand de tekst opnieuw mocht lezen en zo zijn resultaten moest opschrijven. We zien opnieuw gelijkaardige gemiddelden maar in dit geval voor alle aantal uren wiskunde. Merk wel op dat het grootste deel van de groep een mindere score behaalde op de 2e testronde maar er meer uitschieters zijn als bij ronde 1
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{img/corr1}
+		\caption{Frequenties bij score 1 volgens uren wiskunde}
+	\end{figure}
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{img/corr2}
+		\caption{Frequenties bij score 2 volgens uren wiskunde}
+	\end{figure}
+
+	Bovenstaande grafieken tonen de bevindingen van de boxplots op een andere manier aan en zijn dus louter als vervanging die als vermelding gelden voor de frequenties per categorie. Het vertelt dus niks extra over de spreiding van de data.
+	We trachten nu om de ligitimiteit van de data te bevestigen. Om een correlatie te vinden kijken we naar het correlatiecoëfficiënt, in dit geval 0,40 (tussen beide scores). Dit nummer geeft het verband weer tussen 2 variabelen. In dit onderzoek zijn 2 verbanden belangrijk (nl. uren wiskunde -> score1/2 en score1 -> score2). Deze data wordt verder gebruikt om een t-test uit te voeren later in het onderzoek en zo onze vermoedens te bevestigen of ontkrachten. Onderstaande correlatiematrix bevat de p-waarden die in dit geval de correlatiecoëfficiënten voorstellen. We kunnen uit deze matrix afleiden dat de coëfficiënten in alle gevallen zeer zwak zijn. Voor de validatie en werking van deze test verwijs ik naar onze Github repository \autocite{Decorte2019}
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{img/corr.png}
+		\caption{Correlatiematrix}
+	\end{figure}
 	
-	Het is ook handig om te weten als je de testresultaten van een (eventuele) volgende sessie kan voorspellen, dit doen we aan de had van correlatie. Er wordt dus een nummer gekoppeld aan het verband tussen score 1 en score 2. In ons experiment bekomen we een correlatie van 0.400861 (nl. een relatief zwakke correlatie) en dit betekent dat het niet mogelijk is om voorspellingen te maken van de scores.
+	Het correlatiediagram geeft duidelijk de spreiding van onze correlatiescore weer tussen het aantal uren wiskunde en de behaalde score. Het is nogmaals duidelijk dat de laag tot extreem lage scores niet in lijn liggen met de verwachte z-waarde. We kunnen zelf beslissen dat deze waarden belachelijk laag liggen tegenover de verwachtingen en dus hoogstwaarschijnelijk te wijten is aan een steekproeffout die tot niet accurate gegevens leidt.
 	
-	
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{img/qqplot.png}
+		\caption{Q-Q Plot van de dataset idem correlatiediagram}
+	\end{figure}
+
+
 	
 	\section{Conclusie}
 	
-	\lipsum[22-23]
+	
 	
 	%------------------------------------------------------------------------------
 	% Referentielijst
